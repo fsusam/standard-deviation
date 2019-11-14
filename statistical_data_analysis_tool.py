@@ -34,3 +34,18 @@ def variance(data_set):
     variance=sum([abs((x-average)**2) for x in data_set]) / (len(data_set)-1)
     print(f"variance: {variance:.2f}")    
     return variance
+
+# middle number in a data set
+def median(data_set):
+    # sort the list
+    data_set.sort()
+    
+    # find the mid-index
+    mid_index = int(len(data_set)/2)
+        
+    if len(data_set) % 2:
+        # single number in the middle of the data set
+        return data_set[mid_index]
+    else: 
+        # two number in the middle of the data set
+        return (data_set[mid_index-1] + data_set[mid_index])/2
