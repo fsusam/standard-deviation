@@ -17,6 +17,10 @@ def mean(data_set):
 
 # how far a set of (random) numbers are spread out from their average value
 def variance(data_set):
+    
+    if len(data_set)<2:
+           raise Exception("variance requires at least two data points")
+       
     # call mean function to find mean of data set
     average=mean(data_set)
     # find the Variance
@@ -68,7 +72,7 @@ def quartile_first(data_set):
     # find the mid-index
     mid_index = int(len(data_set)/2)
     
-    return get_item_middle_data_set(data_set[0:mid_index])
+    return get_item_middle_data_set(data_set[0:mid_index+1])
 
 
 def quartile_third(data_set):
@@ -79,9 +83,11 @@ def quartile_third(data_set):
     mid_index = int(len(data_set)/2)
     
     if len(data_set) % 2:
-        return get_item_middle_data_set(data_set[mid_index+1:])
-    else:        
-        return get_item_middle_data_set(data_set[mid_index:])
+           # single number in the middle of the data set
+           return get_item_middle_data_set(data_set[mid_index:])
+    else:
+           # two number in the middle of the data set
+           return get_item_middle_data_set(data_set[mid_index-1:])
     
 # min value of data set
 def min_data_set(data_set):
@@ -103,4 +109,15 @@ def get_item_middle_data_set(data_set):
         # two number in the middle of the data set
         return (data_set[mid_index-1] + data_set[mid_index])/2
 
-    
+if __name__ == "__main__" :
+       sample = [1]
+       
+       print("Mean of the sample is % s" %(mean(sample))) 
+       
+       print("Median of the sample is % s" %(median(sample))) 
+       
+       print("quartile first of the sample is % s" %(quartile_first(sample)))
+       
+       print("quartile third of the sample is % s" %(quartile_third(sample)))
+       
+       print("Variance of the sample is % s" %(variance(sample)))
