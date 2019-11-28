@@ -1,4 +1,6 @@
-# General file manipulation utilities
+# Program Name: file_utils
+# Purpose: Read a file and parse by a delimiter, help to create a new data set
+
 
 def read_csv(path, delimiter=',', header=True, clean_chars_header=[]):
     result = []
