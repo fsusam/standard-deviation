@@ -9,7 +9,7 @@
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>statistical_data_analysis_tool</strong></big></big></font></td
 ><td align=right valign=bottom
 ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/fsusam/Development/workspace/python/standard-deviation/src/statistical_data_analysis_tool.py">/home/fsusam/Development/workspace/python/standard-deviation/src/statistical_data_analysis_tool.py</a></font></td></tr></table>
-    <p><tt>#&nbsp;Program&nbsp;Name:&nbsp;test_statistical_data_analysis_tool<br>
+    <p><tt>#&nbsp;Program&nbsp;Name:&nbsp;statistical_data_analysis_tool<br>
 #&nbsp;Purpose:&nbsp;provide&nbsp;&nbsp;some&nbsp;statistical&nbsp;data&nbsp;analysis&nbsp;methods</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -26,27 +26,132 @@
 <font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
     
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-correlation_pearson"><strong>correlation_pearson</strong></a>(data_setx, data_sety)</dt><dd><tt>#&nbsp;calculate&nbsp;correlation<br>
-#&nbsp;measure&nbsp;of&nbsp;the&nbsp;linear&nbsp;relationship&nbsp;between&nbsp;two&nbsp;quantitative&nbsp;variables</tt></dd></dl>
- <dl><dt><a name="-get_item_middle_data_set"><strong>get_item_middle_data_set</strong></a>(data_set)</dt><dd><tt>#&nbsp;find&nbsp;the&nbsp;median&nbsp;and&nbsp;check&nbsp;single&nbsp;number&nbsp;in&nbsp;the&nbsp;middle&nbsp;of&nbsp;the&nbsp;data&nbsp;set&nbsp;or&nbsp;not</tt></dd></dl>
- <dl><dt><a name="-max_data_set"><strong>max_data_set</strong></a>(data_set)</dt><dd><tt>#&nbsp;max&nbsp;value&nbsp;of&nbsp;data&nbsp;set</tt></dd></dl>
- <dl><dt><a name="-mean"><strong>mean</strong></a>(data_set)</dt><dd><tt>#&nbsp;average&nbsp;of&nbsp;the&nbsp;data&nbsp;set</tt></dd></dl>
- <dl><dt><a name="-median"><strong>median</strong></a>(data_set)</dt><dd><tt>#&nbsp;middle&nbsp;number&nbsp;in&nbsp;a&nbsp;data&nbsp;set</tt></dd></dl>
- <dl><dt><a name="-min_data_set"><strong>min_data_set</strong></a>(data_set)</dt><dd><tt>#&nbsp;min&nbsp;value&nbsp;of&nbsp;data&nbsp;set</tt></dd></dl>
- <dl><dt><a name="-quartile_first"><strong>quartile_first</strong></a>(data_set)</dt><dd><tt>#&nbsp;find&nbsp;quartile&nbsp;%25</tt></dd></dl>
- <dl><dt><a name="-quartile_third"><strong>quartile_third</strong></a>(data_set)</dt><dd><tt>#&nbsp;find&nbsp;quartile&nbsp;%75</tt></dd></dl>
+<td width="100%"><dl><dt><a name="-correlation_pearson"><strong>correlation_pearson</strong></a>(data_setx, data_sety)</dt><dd><tt>Calculate&nbsp;measure&nbsp;of&nbsp;the&nbsp;linear&nbsp;relationship&nbsp;between&nbsp;two&nbsp;quantitative&nbsp;variables<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data_set&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consist&nbsp;of&nbsp;numeric&nbsp;values.&nbsp;eg:&nbsp;[1,2,3,4,5]<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pearsonr</tt></dd></dl>
+ <dl><dt><a name="-get_item_middle_data_set"><strong>get_item_middle_data_set</strong></a>(data_set)</dt><dd><tt>Find&nbsp;the&nbsp;middle&nbsp;index&nbsp;of&nbsp;the&nbsp;data&nbsp;set&nbsp;and&nbsp;decide&nbsp;the&nbsp;middle&nbsp;of&nbsp;the&nbsp;data&nbsp;set&nbsp;is&nbsp;single&nbsp;or&nbsp;not<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data_set&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consist&nbsp;of&nbsp;numeric&nbsp;values.&nbsp;eg:&nbsp;[1,2,3,4,5]<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item&nbsp;which&nbsp;is&nbsp;the&nbsp;middle&nbsp;of&nbsp;the&nbsp;data&nbsp;set</tt></dd></dl>
+ <dl><dt><a name="-max_data_set"><strong>max_data_set</strong></a>(data_set)</dt><dd><tt>max&nbsp;value&nbsp;of&nbsp;data&nbsp;set<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data_set&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consist&nbsp;of&nbsp;numeric&nbsp;values.&nbsp;eg:&nbsp;[1,2,3,4,5]<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max&nbsp;item&nbsp;in&nbsp;the&nbsp;data_set</tt></dd></dl>
+ <dl><dt><a name="-mean"><strong>mean</strong></a>(data_set)</dt><dd><tt>Calculate&nbsp;avarage&nbsp;of&nbsp;data&nbsp;set<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data_set&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consist&nbsp;of&nbsp;numeric&nbsp;values.&nbsp;eg:&nbsp;[1,2,3,4,5]<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mean</tt></dd></dl>
+ <dl><dt><a name="-median"><strong>median</strong></a>(data_set)</dt><dd><tt>find&nbsp;the&nbsp;middle&nbsp;number&nbsp;in&nbsp;a&nbsp;data&nbsp;set<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data_set&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consist&nbsp;of&nbsp;numeric&nbsp;values.&nbsp;eg:&nbsp;[1,2,3,4,5]<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;median</tt></dd></dl>
+ <dl><dt><a name="-min_data_set"><strong>min_data_set</strong></a>(data_set)</dt><dd><tt>min&nbsp;value&nbsp;of&nbsp;data&nbsp;set<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data_set&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consist&nbsp;of&nbsp;numeric&nbsp;values.&nbsp;eg:&nbsp;[1,2,3,4,5]<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+Numeric<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min&nbsp;item&nbsp;in&nbsp;the&nbsp;data&nbsp;set</tt></dd></dl>
+ <dl><dt><a name="-quartile_first"><strong>quartile_first</strong></a>(data_set)</dt><dd><tt>Find&nbsp;the&nbsp;middle&nbsp;number&nbsp;between&nbsp;the&nbsp;smallest&nbsp;number&nbsp;and&nbsp;the&nbsp;median&nbsp;of&nbsp;the&nbsp;data&nbsp;set<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data_set&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consist&nbsp;of&nbsp;numeric&nbsp;values.&nbsp;eg:&nbsp;[1,2,3,4,5]<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quartile&nbsp;(Q1)</tt></dd></dl>
+ <dl><dt><a name="-quartile_third"><strong>quartile_third</strong></a>(data_set)</dt><dd><tt>Find&nbsp;the&nbsp;middle&nbsp;value&nbsp;between&nbsp;the&nbsp;median&nbsp;and&nbsp;the&nbsp;highest&nbsp;value&nbsp;of&nbsp;the&nbsp;data&nbsp;set<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data_set&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consist&nbsp;of&nbsp;numeric&nbsp;values.&nbsp;eg:&nbsp;[1,2,3,4,5]<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quartile&nbsp;(Q3)</tt></dd></dl>
  <dl><dt><a name="-standard_deviation"><strong>standard_deviation</strong></a>(data_set)</dt><dd><tt>Calculate&nbsp;standard&nbsp;deviation<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
 data_set&nbsp;:&nbsp;list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Numeric&nbsp;data&nbsp;set.&nbsp;eg:&nbsp;[1,2,3,4,5]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consist&nbsp;of&nbsp;numeric&nbsp;values.&nbsp;eg:&nbsp;[1,2,3,4,5]<br>
 &nbsp;<br>
 Returns<br>
 -------<br>
 float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;standard&nbsp;deviation.</tt></dd></dl>
- <dl><dt><a name="-variance"><strong>variance</strong></a>(data_set)</dt><dd><tt>#&nbsp;how&nbsp;far&nbsp;a&nbsp;set&nbsp;of&nbsp;(random)&nbsp;numbers&nbsp;are&nbsp;spread&nbsp;out&nbsp;from&nbsp;their&nbsp;average&nbsp;value</tt></dd></dl>
- <dl><dt><a name="-verify_data_set_length"><strong>verify_data_set_length</strong></a>(expected_length_at_least, data_set, func_name)</dt><dd><tt>#&nbsp;common&nbsp;data&nbsp;set&nbsp;length&nbsp;check</tt></dd></dl>
+ <dl><dt><a name="-variance"><strong>variance</strong></a>(data_set)</dt><dd><tt>Calculate&nbsp;how&nbsp;far&nbsp;a&nbsp;set&nbsp;of&nbsp;(random)&nbsp;numbers&nbsp;are&nbsp;spread&nbsp;out&nbsp;from&nbsp;their&nbsp;average&nbsp;value<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data_set&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consist&nbsp;of&nbsp;numeric&nbsp;values.&nbsp;eg:&nbsp;[1,2,3,4,5]<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variance</tt></dd></dl>
+ <dl><dt><a name="-verify_data_set_length"><strong>verify_data_set_length</strong></a>(expected_length_at_least, data_set, func_name)</dt><dd><tt>Verify&nbsp;the&nbsp;data&nbsp;set&nbsp;length&nbsp;by&nbsp;specified&nbsp;data&nbsp;set&nbsp;length<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data_set&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consist&nbsp;of&nbsp;numeric&nbsp;values.&nbsp;eg:&nbsp;[1,2,3,4,5]<br>
+&nbsp;<br>
+expected_length_at_least&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;smallest&nbsp;data&nbsp;point.&nbsp;eg:&nbsp;it&nbsp;can't&nbsp;be&nbsp;&gt;&gt;&gt;&nbsp;len(data_set)&lt;expected_length_at_least<br>
+&nbsp;<br>
+func_name&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invoked&nbsp;function&nbsp;name.&nbsp;eg:&nbsp;"variance"&nbsp;or&nbsp;"mean"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Raise<br>
+-------<br>
+Exception<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Raise&nbsp;Exception&nbsp;if&nbsp;len(data_set)&lt;expected_length_at_least</tt></dd></dl>
 </td></tr></table>
 </body></html>
