@@ -4,7 +4,13 @@
 # Read CSV file line by line and split the lines into columns
 def read_csv(path, delimiter=',', header=True, clean_chars_header=[]):
     """
-    Read CSV file line by line and split the lines into columns
+    Read CSV file line by line and split the lines into columns.
+
+    The delimiter is default "," but it can be specified a different char.
+    "header" should be True if the file has header.
+
+    If the file has any special char in header like '"' , this char can be removed if it is specified inside
+    "clean_chars_header"
 
     Parameters
     ----------
@@ -80,39 +86,143 @@ def read_csv(path, delimiter=',', header=True, clean_chars_header=[]):
     return result
 
 
+# create a data set with only selected columns
 def select_columns(data, cols):
+    """
+    Create a data set with only selected columns
+
+    Parameters
+    ----------
+    data : list
+        original data set. eg : [{"Name":"test", "LastName":"test"}]
+
+    cols : list
+        selected columns. eg : ["Name"]
+
+    Returns
+    -------
+    list
+        new data set which contains only selected columns. eg : [{"Name":"test"}]
+    """
+    # new data set which will be created with selected columns
     selected_columns_data_set = []
-
+    # get values of selected columns from the data which is given as input paramater
     for row in data:
+        # invoke the build_row_by_columns function to get the column value
         selected_columns_data_set.append(build_row_by_columns(row, cols))
-
+    # return new data set which contains only selected columns
     return selected_columns_data_set
 
 
+# build new dictionary which contains only selected columns
 def build_row_by_columns(data_item, cols):
+    """
+    Build new dictionary which contains only selected columns
+
+    Parameters
+    ----------
+    data_item : dict
+        original item inside data set. eg : {"Name":"test", "LastName":"test"}
+
+    cols : list
+        selected columns. eg : ["Name"]
+
+    Returns
+    -------
+    dict
+        new dictionary which contains only selected columns eg : {"Name":"test"}
+    """
+    # create an empty dictionary
     row_dict = {}
+    # use each column as a key for new dictionary object and the item where is inside the original dictionary assign
+    # to key
     for select_col in cols:
+        # the key is selected column, value is found inside the original dictionary by key
         row_dict[select_col] = data_item[select_col]
+    # return new dictionary which contains only selected columns
     return row_dict
 
 
-def sample_rows(data, count):
+# return subset of list by specified count
+def sample_rows(data, count=1):
+    """
+    return subset of list by specified count
+
+    Parameters
+    ----------
+    data : list
+        data set. eg : [{"Name":"test", "LastName":"test"} , {"Name":"test1", "LastName":"test1"}]
+
+    count : int
+        subset of list count. Default is 1
+
+    Returns
+    -------
+    list
+        subset of list eg : [{"Name":"test", "LastName":"test"}]
+    """
+    # return subset of list
     return data[:count]
 
 
+# get columns of data set
 def get_columns(data):
+    """
+    Each item of data set is consists of a dictionary type. The keys of the dictionary item indicate columns.
+    One sample item in the data set is enough to get columns
+    because each dictionary in the data set consists of the same structure.
+    This function allows users to see columns and gets the data by using these columns.
+
+    The data set must have at least one item.
+
+    Parameters
+    ----------
+    data : list
+        data set. eg : [{"Name":"test", "LastName":"test"} , {"Name":"test1", "LastName":"test1"}]
+
+    Returns
+    -------
+    list
+        columns of the data set : ["Name", "LastName"}]
+
+    """
     return [item for item in data[0]]
 
 
+# create column list by using header of file or create default columns
 def create_col(header=None, col_count=None, clean_chars=[]):
-    col_names = []
+    """
+    Creates a unique column list by using the header of file or,
+    build a list by creating the unique name if there is no existing header.
 
+    "header" and "col_count" should not be assigned value at the same time.
+    If it is assigned then "header" has more priority
+
+    Parameters
+    ----------
+    header : list
+        header of the file. Default is None. eg : ["Name","LastName"]
+
+    col_count : int
+        created a list which contains a unique name by col_count.
+        eg: if count is 2 , function creates ["col_1", "col_2"]
+
+    Returns
+    -------
+    list
+        columns of the data set : ["Name", "LastName"}] or ["col_1", "col_2"]
+
+    """
+    # create an empty list
+    col_names = []
+    # use header if it is specified
     if (header):
         for col_name in header:
+            # send each item in header to build unique column name
             col_names.append(create_column_name(col_names, col_name, clean_chars))
-    elif (col_count):
+    elif (col_count):  # build unique default column names
         col_names = [f"col_{i + 1}" for i in range(col_count)]
-
+    # return unique column name
     return col_names
 
 
