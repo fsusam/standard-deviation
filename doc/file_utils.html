@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module file_utils</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>file_utils</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/fsusam/Development/workspace/python/standard-deviation/src/file_utils.py">/home/fsusam/Development/workspace/python/standard-deviation/src/file_utils.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;Program&nbsp;Name:&nbsp;file_utils<br>
+#&nbsp;Purpose:&nbsp;Read&nbsp;a&nbsp;file&nbsp;and&nbsp;parse&nbsp;by&nbsp;a&nbsp;delimiter,&nbsp;help&nbsp;to&nbsp;create&nbsp;a&nbsp;new&nbsp;data&nbsp;set</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-aggregation_count"><strong>aggregation_count</strong></a>(data, group_column_name, group_columns)</dt><dd><tt>The&nbsp;data&nbsp;filtered&nbsp;by&nbsp;the&nbsp;values&nbsp;inside&nbsp;group_columns&nbsp;to&nbsp;count&nbsp;the&nbsp;filtered&nbsp;rows.<br>
+The&nbsp;result&nbsp;contains&nbsp;some&nbsp;extra&nbsp;fields.&nbsp;These&nbsp;fields&nbsp;can&nbsp;be&nbsp;removed&nbsp;if&nbsp;they&nbsp;will&nbsp;be&nbsp;not&nbsp;used<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;consists&nbsp;of&nbsp;the&nbsp;dictionary&nbsp;items.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;eg&nbsp;:&nbsp;[{"Name":"test",&nbsp;"LastName":"test"}&nbsp;,&nbsp;{"Name":"test",&nbsp;"LastName":"test1"}]<br>
+&nbsp;<br>
+group_column_name&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;unique&nbsp;group&nbsp;column&nbsp;name.&nbsp;eg:&nbsp;"count_Name"<br>
+&nbsp;<br>
+group_columns&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;set&nbsp;is&nbsp;filtered&nbsp;by&nbsp;the&nbsp;values&nbsp;inside&nbsp;group_columns&nbsp;to&nbsp;count.&nbsp;eg:&nbsp;["Name"]<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;data&nbsp;set&nbsp;with&nbsp;count&nbsp;by&nbsp;group_columns.&nbsp;eg:&nbsp;[{"Name":"test",&nbsp;"count_Name":2,&nbsp;(test,):2}]<br>
+&nbsp;<br>
+Raises<br>
+------<br>
+Exception<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;group_column_name&nbsp;is&nbsp;not&nbsp;unique&nbsp;then&nbsp;raise&nbsp;Exception</tt></dd></dl>
+ <dl><dt><a name="-build_row_by_columns"><strong>build_row_by_columns</strong></a>(data_item, cols)</dt><dd><tt>Build&nbsp;new&nbsp;dictionary&nbsp;which&nbsp;contains&nbsp;only&nbsp;selected&nbsp;columns<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data_item&nbsp;:&nbsp;dict<br>
+&nbsp;&nbsp;&nbsp;&nbsp;original&nbsp;item&nbsp;inside&nbsp;data&nbsp;set.&nbsp;eg&nbsp;:&nbsp;{"Name":"test",&nbsp;"LastName":"test"}<br>
+&nbsp;<br>
+cols&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;selected&nbsp;columns.&nbsp;eg&nbsp;:&nbsp;["Name"]<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+dict<br>
+&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;dictionary&nbsp;which&nbsp;contains&nbsp;only&nbsp;selected&nbsp;columns&nbsp;eg&nbsp;:&nbsp;{"Name":"test"}</tt></dd></dl>
+ <dl><dt><a name="-create_col"><strong>create_col</strong></a>(header=None, col_count=None, clean_chars=[])</dt><dd><tt>Creates&nbsp;a&nbsp;unique&nbsp;column&nbsp;list&nbsp;by&nbsp;using&nbsp;the&nbsp;header&nbsp;of&nbsp;file&nbsp;or,<br>
+build&nbsp;a&nbsp;list&nbsp;by&nbsp;creating&nbsp;the&nbsp;unique&nbsp;name&nbsp;if&nbsp;there&nbsp;is&nbsp;no&nbsp;existing&nbsp;header.<br>
+&nbsp;<br>
+"header"&nbsp;and&nbsp;"col_count"&nbsp;should&nbsp;not&nbsp;be&nbsp;assigned&nbsp;value&nbsp;at&nbsp;the&nbsp;same&nbsp;time.<br>
+If&nbsp;it&nbsp;is&nbsp;assigned&nbsp;then&nbsp;"header"&nbsp;has&nbsp;more&nbsp;priority<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+header&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;header&nbsp;of&nbsp;the&nbsp;file.&nbsp;Default&nbsp;is&nbsp;None.&nbsp;eg&nbsp;:&nbsp;["Name","LastName"]<br>
+&nbsp;<br>
+col_count&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;created&nbsp;a&nbsp;list&nbsp;which&nbsp;contains&nbsp;a&nbsp;unique&nbsp;name&nbsp;by&nbsp;col_count.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;eg:&nbsp;if&nbsp;count&nbsp;is&nbsp;2&nbsp;,&nbsp;function&nbsp;creates&nbsp;["col_1",&nbsp;"col_2"]<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;columns&nbsp;of&nbsp;the&nbsp;data&nbsp;set&nbsp;:&nbsp;["Name",&nbsp;"LastName"}]&nbsp;or&nbsp;["col_1",&nbsp;"col_2"]</tt></dd></dl>
+ <dl><dt><a name="-create_column_name"><strong>create_column_name</strong></a>(col_names, value, clean_chars)</dt><dd><tt>Create&nbsp;a&nbsp;column&nbsp;name&nbsp;&nbsp;by&nbsp;using&nbsp;the&nbsp;value&nbsp;in&nbsp;the&nbsp;input&nbsp;parameter.<br>
+All&nbsp;whitespace&nbsp;chars&nbsp;and&nbsp;the&nbsp;char&nbsp;which&nbsp;was&nbsp;specified&nbsp;inside&nbsp;clean_chars&nbsp;are&nbsp;removed.<br>
+If&nbsp;the&nbsp;value&nbsp;is&nbsp;existing&nbsp;inside&nbsp;the&nbsp;col_names,&nbsp;the&nbsp;value&nbsp;is&nbsp;made&nbsp;be&nbsp;unique&nbsp;by&nbsp;adding&nbsp;suffix.&nbsp;eg&nbsp;:&nbsp;"Name_1"<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+col_names&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list&nbsp;of&nbsp;the&nbsp;column&nbsp;names.&nbsp;eg&nbsp;:&nbsp;["Name","LastName"]<br>
+&nbsp;<br>
+value&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;column&nbsp;name.&nbsp;eg:&nbsp;"Name"<br>
+&nbsp;<br>
+clean_chars&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;list&nbsp;of&nbsp;chars&nbsp;which&nbsp;will&nbsp;be&nbsp;removed.&nbsp;eg:&nbsp;'"'<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;column&nbsp;name.&nbsp;eg:&nbsp;"Name"&nbsp;or&nbsp;"Name_1"</tt></dd></dl>
+ <dl><dt><a name="-create_data_set"><strong>create_data_set</strong></a>(data, key_column, data_set_column)</dt><dd><tt>Creates&nbsp;a&nbsp;data&nbsp;set&nbsp;to&nbsp;use&nbsp;for&nbsp;some&nbsp;statistical&nbsp;methods&nbsp;by&nbsp;key_column&nbsp;and&nbsp;data_set_column<br>
+&nbsp;<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;consists&nbsp;of&nbsp;the&nbsp;dictionary&nbsp;items.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;eg&nbsp;:&nbsp;[{"Name":"test",&nbsp;"Year":2000,&nbsp;"Score":1}&nbsp;,&nbsp;{"Name":"test",&nbsp;"Year":2001,&nbsp;"Score":2}]<br>
+&nbsp;<br>
+key_column&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;used&nbsp;to&nbsp;find&nbsp;data&nbsp;set&nbsp;value&nbsp;and&nbsp;this&nbsp;value&nbsp;will&nbsp;be&nbsp;key&nbsp;of&nbsp;new&nbsp;data&nbsp;set.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;eg:&nbsp;"Name"<br>
+&nbsp;<br>
+data_set_column&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;used&nbsp;to&nbsp;find&nbsp;data&nbsp;set&nbsp;value&nbsp;and&nbsp;this&nbsp;value&nbsp;will&nbsp;be&nbsp;value&nbsp;of&nbsp;new&nbsp;data&nbsp;set<br>
+&nbsp;&nbsp;&nbsp;&nbsp;eg:&nbsp;"Score"<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;created&nbsp;new&nbsp;data&nbsp;set&nbsp;by&nbsp;using&nbsp;original&nbsp;data.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;eg:&nbsp;[{"Name":[1,2]}]</tt></dd></dl>
+ <dl><dt><a name="-filter_by"><strong>filter_by</strong></a>(data, filter_values)</dt><dd><tt>The&nbsp;data&nbsp;is&nbsp;given&nbsp;to&nbsp;the&nbsp;function&nbsp;to&nbsp;to&nbsp;filter&nbsp;by&nbsp;the&nbsp;values&nbsp;inside&nbsp;filter_values.<br>
+The&nbsp;"filter"&nbsp;function&nbsp;is&nbsp;used&nbsp;to&nbsp;do&nbsp;that.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;consists&nbsp;of&nbsp;the&nbsp;dictionary&nbsp;items.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;eg&nbsp;:&nbsp;[{"Name":"test",&nbsp;"LastName":"test"}&nbsp;,&nbsp;{"Name":"test1",&nbsp;"LastName":"test1"}]<br>
+&nbsp;<br>
+filter_values&nbsp;:&nbsp;dict<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consists&nbsp;of&nbsp;the&nbsp;dictionary&nbsp;items.&nbsp;the&nbsp;key&nbsp;of&nbsp;the&nbsp;dictionary&nbsp;item&nbsp;corresponds&nbsp;to&nbsp;the&nbsp;key&nbsp;of&nbsp;the&nbsp;dictionary<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;the&nbsp;data.&nbsp;The&nbsp;data&nbsp;is&nbsp;filtered&nbsp;by&nbsp;values&nbsp;that&nbsp;are&nbsp;specified&nbsp;in&nbsp;filter_values.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;eg:&nbsp;{"Name":["test"]}<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;filtered&nbsp;the&nbsp;data.&nbsp;eg:&nbsp;[{"Name":"test",&nbsp;"LastName":"test"}]</tt></dd></dl>
+ <dl><dt><a name="-get_columns"><strong>get_columns</strong></a>(data)</dt><dd><tt>Each&nbsp;item&nbsp;of&nbsp;data&nbsp;set&nbsp;is&nbsp;consists&nbsp;of&nbsp;a&nbsp;dictionary&nbsp;type.&nbsp;The&nbsp;keys&nbsp;of&nbsp;the&nbsp;dictionary&nbsp;item&nbsp;indicate&nbsp;columns.<br>
+One&nbsp;sample&nbsp;item&nbsp;in&nbsp;the&nbsp;data&nbsp;set&nbsp;is&nbsp;enough&nbsp;to&nbsp;get&nbsp;columns<br>
+because&nbsp;each&nbsp;dictionary&nbsp;in&nbsp;the&nbsp;data&nbsp;set&nbsp;consists&nbsp;of&nbsp;the&nbsp;same&nbsp;structure.<br>
+This&nbsp;function&nbsp;allows&nbsp;users&nbsp;to&nbsp;see&nbsp;columns&nbsp;and&nbsp;gets&nbsp;the&nbsp;data&nbsp;by&nbsp;using&nbsp;these&nbsp;columns.<br>
+&nbsp;<br>
+The&nbsp;data&nbsp;set&nbsp;must&nbsp;have&nbsp;at&nbsp;least&nbsp;one&nbsp;item.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;set.&nbsp;eg&nbsp;:&nbsp;[{"Name":"test",&nbsp;"LastName":"test"}&nbsp;,&nbsp;{"Name":"test1",&nbsp;"LastName":"test1"}]<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;columns&nbsp;of&nbsp;the&nbsp;data&nbsp;set&nbsp;:&nbsp;["Name",&nbsp;"LastName"}]</tt></dd></dl>
+ <dl><dt><a name="-group_by"><strong>group_by</strong></a>(data, group_columns, aggregation, show_columns)</dt><dd><tt>The&nbsp;data&nbsp;is&nbsp;given&nbsp;to&nbsp;the&nbsp;function&nbsp;to&nbsp;group&nbsp;by&nbsp;the&nbsp;values&nbsp;inside&nbsp;group_columns&nbsp;and&nbsp;aggregate&nbsp;the&nbsp;column&nbsp;which&nbsp;is<br>
+specified&nbsp;inside&nbsp;group_columns&nbsp;by&nbsp;an&nbsp;aggregation&nbsp;method.<br>
+&nbsp;<br>
+The&nbsp;new&nbsp;data&nbsp;set&nbsp;which&nbsp;is&nbsp;created&nbsp;after&nbsp;the&nbsp;aggregation&nbsp;process&nbsp;consists&nbsp;of&nbsp;a&nbsp;new&nbsp;column&nbsp;that&nbsp;is&nbsp;created<br>
+inside&nbsp;this&nbsp;function.&nbsp;This&nbsp;new&nbsp;column&nbsp;is&nbsp;named&nbsp;by&nbsp;merging&nbsp;items&nbsp;inside&nbsp;group_columns.<br>
+eg&nbsp;:&nbsp;if&nbsp;the&nbsp;group_columns&nbsp;like&nbsp;["Name"]&nbsp;,&nbsp;the&nbsp;group&nbsp;name&nbsp;column&nbsp;is&nbsp;named&nbsp;like&nbsp;"count_Name"<br>
+&nbsp;<br>
+Only&nbsp;the&nbsp;"count"&nbsp;aggregation&nbsp;method&nbsp;is&nbsp;supported&nbsp;for&nbsp;now.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;consists&nbsp;of&nbsp;the&nbsp;dictionary&nbsp;items.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;eg&nbsp;:&nbsp;[{"Name":"test",&nbsp;"LastName":"test"}&nbsp;,&nbsp;{"Name":"test",&nbsp;"LastName":"test1"}]<br>
+&nbsp;<br>
+group_columns&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consists&nbsp;of&nbsp;column&nbsp;names.&nbsp;eg:&nbsp;["Name"]<br>
+&nbsp;<br>
+aggregation&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;specified&nbsp;the&nbsp;aggregation&nbsp;method.&nbsp;eg:&nbsp;"count"<br>
+&nbsp;<br>
+show_columns&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;specified&nbsp;the&nbsp;columns&nbsp;which&nbsp;will&nbsp;be&nbsp;inside&nbsp;the&nbsp;new&nbsp;data&nbsp;set.&nbsp;Default&nbsp;is&nbsp;"None".&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;eg:&nbsp;["Name"]<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grouped&nbsp;the&nbsp;data&nbsp;set.&nbsp;eg:&nbsp;[{"Name":"test",&nbsp;"count_Name":2}]<br>
+&nbsp;<br>
+Raises<br>
+------<br>
+Exception<br>
+&nbsp;&nbsp;&nbsp;&nbsp;raise&nbsp;exception&nbsp;if&nbsp;one&nbsp;of&nbsp;input&nbsp;parameter&nbsp;is&nbsp;None&nbsp;or&nbsp;empty<br>
+&nbsp;&nbsp;&nbsp;&nbsp;raise&nbsp;exception&nbsp;if&nbsp;items&nbsp;of&nbsp;show_columns&nbsp;are&nbsp;not&nbsp;in&nbsp;group_columns<br>
+&nbsp;&nbsp;&nbsp;&nbsp;raise&nbsp;exception&nbsp;if&nbsp;the&nbsp;aggregation&nbsp;method&nbsp;is&nbsp;not&nbsp;supported</tt></dd></dl>
+ <dl><dt><a name="-read_csv"><strong>read_csv</strong></a>(path, delimiter=',', header=True, clean_chars_header=[])</dt><dd><tt>Read&nbsp;CSV&nbsp;file&nbsp;line&nbsp;by&nbsp;line&nbsp;and&nbsp;split&nbsp;the&nbsp;lines&nbsp;into&nbsp;columns.<br>
+&nbsp;<br>
+The&nbsp;delimiter&nbsp;is&nbsp;default&nbsp;","&nbsp;but&nbsp;it&nbsp;can&nbsp;be&nbsp;specified&nbsp;a&nbsp;different&nbsp;char.<br>
+"header"&nbsp;should&nbsp;be&nbsp;True&nbsp;if&nbsp;the&nbsp;file&nbsp;has&nbsp;header.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;file&nbsp;has&nbsp;any&nbsp;special&nbsp;char&nbsp;in&nbsp;header&nbsp;like&nbsp;'"'&nbsp;,&nbsp;this&nbsp;char&nbsp;can&nbsp;be&nbsp;removed&nbsp;if&nbsp;it&nbsp;is&nbsp;specified&nbsp;inside<br>
+"clean_chars_header"<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+path&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;absolute&nbsp;file&nbsp;path.&nbsp;eg:&nbsp;/home/user/workspace/data.csv<br>
+&nbsp;<br>
+delimiter&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;splitter&nbsp;char&nbsp;for&nbsp;lines.&nbsp;Default&nbsp;is&nbsp;","<br>
+&nbsp;<br>
+header&nbsp;:&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;specify&nbsp;the&nbsp;file&nbsp;has&nbsp;a&nbsp;header.&nbsp;Default&nbsp;is&nbsp;"True"<br>
+&nbsp;<br>
+clean_chars_header&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;it&nbsp;will&nbsp;be&nbsp;removed&nbsp;the&nbsp;chars&nbsp;inside&nbsp;list.&nbsp;Default&nbsp;is&nbsp;"empty&nbsp;list"<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;the&nbsp;dictionary&nbsp;list.&nbsp;eg&nbsp;[{"Name":"test",&nbsp;"LastName":"test"}]</tt></dd></dl>
+ <dl><dt><a name="-sample_rows"><strong>sample_rows</strong></a>(data, count=1)</dt><dd><tt>return&nbsp;subset&nbsp;of&nbsp;list&nbsp;by&nbsp;specified&nbsp;count<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;set.&nbsp;eg&nbsp;:&nbsp;[{"Name":"test",&nbsp;"LastName":"test"}&nbsp;,&nbsp;{"Name":"test1",&nbsp;"LastName":"test1"}]<br>
+&nbsp;<br>
+count&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subset&nbsp;of&nbsp;list&nbsp;count.&nbsp;Default&nbsp;is&nbsp;1<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subset&nbsp;of&nbsp;list&nbsp;eg&nbsp;:&nbsp;[{"Name":"test",&nbsp;"LastName":"test"}]</tt></dd></dl>
+ <dl><dt><a name="-select_columns"><strong>select_columns</strong></a>(data, cols)</dt><dd><tt>Create&nbsp;a&nbsp;data&nbsp;set&nbsp;with&nbsp;only&nbsp;selected&nbsp;columns<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;original&nbsp;data&nbsp;set.&nbsp;eg&nbsp;:&nbsp;[{"Name":"test",&nbsp;"LastName":"test"}]<br>
+&nbsp;<br>
+cols&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;selected&nbsp;columns.&nbsp;eg&nbsp;:&nbsp;["Name"]<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;data&nbsp;set&nbsp;which&nbsp;contains&nbsp;only&nbsp;selected&nbsp;columns.&nbsp;eg&nbsp;:&nbsp;[{"Name":"test"}]</tt></dd></dl>
+</td></tr></table>
+</body></html>
