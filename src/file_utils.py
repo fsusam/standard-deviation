@@ -226,86 +226,242 @@ def create_col(header=None, col_count=None, clean_chars=[]):
     return col_names
 
 
+# create a column name by using the value in the input parameter
 def create_column_name(col_names, value, clean_chars):
+    """
+    Create a column name  by using the value in the input parameter.
+    All whitespace chars and the char which was specified inside clean_chars are removed.
+    If the value is existing inside the col_names, the value is made be unique by adding suffix. eg : "Name_1"
+
+    Parameters
+    ----------
+    col_names : list
+        list of the column names. eg : ["Name","LastName"]
+
+    value : str
+        column name. eg: "Name"
+
+    clean_chars : list
+        the list of chars which will be removed. eg: '"'
+
+    Returns
+    -------
+    str
+        column name. eg: "Name" or "Name_1"
+    """
+    # clean the char inside the value if specified any char in clean_chars list
     if value:
-        for sc in clean_chars:
-            value = ''.join(value.split()).replace(sc, '')
-        else:
+        for cc in clean_chars:
+            # clean the char inside clean_chars and any all whitespace in the value
+            value = ''.join(value.split()).replace(cc, '')
+        else:  # clean all whitespace in the value
             value = ''.join(value.split())
-
+    # col suffix index
     col_idx = 1
-
+    # add the index as suffix and increment if after adding if the column name is existing in the list
     while True:
         if value in col_names:
             value = f"{value}_{col_idx}"
             col_idx += 1
-        else:
+        else:  # return the value after finish all process
             return value
 
 
+# filter the data set by values
 def filter_by(data, filter_values):
-    filtered_list = data
+    """
+    The data is given to the function to to filter by the values inside filter_values.
+    The "filter" function is used to do that.
 
+    Parameters
+    ----------
+    data : list
+        consists of the dictionary items.
+        eg : [{"Name":"test", "LastName":"test"} , {"Name":"test1", "LastName":"test1"}]
+
+    filter_values : list
+         consists of the dictionary items. the key of the dictionary item corresponds to the key of the dictionary
+         in the data. The data is filtered by values that are specified in filter_values.
+        eg: [{"Name":["test"]}]
+
+    Returns
+    -------
+    list
+        filtered the data. eg: [{"Name":"test", "LastName":"test"}]
+    """
+    # assign the data to variable
+    filtered_list = data
+    # filter_values is consists of dictionary. The key in the dictionary  indicates to a key of the dictionary
+    # in the data set. The value in the dictionary is used to filter the data set
     for filter_col in filter_values:
         filtered_list = list(filter(lambda data: data[filter_col] in filter_values[filter_col], filtered_list))
-
+    # return the filtered list
     return filtered_list
 
 
-def group_by(data, group_columns, show_columns, aggregation):
+# Group the data by specified columns and aggregate some columns by the aggregation method
+def group_by(data, group_columns, aggregation, show_columns=None):
+    """
+    The data is given to the function to group by the values inside group_columns and aggregate the column which is
+    specified inside group_columns by an aggregation method.
+
+    The new data set which is created after the aggregation process consists of a new column that is created
+    inside this function. This new column is named by merging items inside group_columns.
+    eg : if the group_columns like ["Name"] , the group name column is named like "count_Name"
+
+    Only the "count" aggregation method is supported for now.
+
+    Parameters
+    ----------
+    data : list
+        consists of the dictionary items.
+        eg : [{"Name":"test", "LastName":"test"} , {"Name":"test", "LastName":"test1"}]
+
+    group_columns : list
+         consists of column names. eg: ["Name"]
+
+    aggregation : str
+        specified the aggregation method. eg: "count"
+
+    show_columns : list
+        specified the columns which will be inside the new data set. eg: ["Name"]
+
+    Returns
+    -------
+    list
+        grouped the data set. eg: [{"Name":"test", "count_Name":2}]
+
+    Raises
+    ------
+    Exception
+        If the aggregation method is not supported then raise Exception
+    """
+    # raise exception if the aggregation method is not supported
     if not aggregation in ['count']:
-        print(f'[{aggregation}] is not supported')
-        return data
-
+        raise Exception(f'[{aggregation}] method is not supported')
+    # create group column name to make the aggregation column unique
     group_column_name = aggregation + "_" + "_".join(group_columns)
-
+    # create a empty list
     result = []
-
+    # invoke the aggregation_count method if the aggregation method is "count"
     if aggregation == "count":
         result = aggregation_count(data, group_column_name, group_columns, show_columns)
+        # add the new column name to show_columns to create new data_set if show_columns is not "None"
+        if show_columns:
+            show_columns.append(group_column_name)
+            # send show_columns and data_set to  select_columns function
+            return select_columns(result, show_columns)
+        else:
+            # add the new column name to the columns of the original data set. Because,
+            # some unique keys is added to data_set after aggregation process.
+            # We should remove these fields from the data_set
+            # get columns in the original data set
+            data_columns = get_columns(data)
+            # append the group column name
+            data_columns.append(group_column_name)
+            # remove extra fields and create new data set with count
+            return select_columns(result, data_columns)
 
-    show_columns.append(group_column_name)
 
-    return select_columns(result, show_columns)
+# "count" aggregation method
+def aggregation_count(data, group_column_name, group_columns):
+    """
+    The data filtered by the values inside group_columns to count the filtered rows.
+    The result contains some extra fields. These fields can be removed if they will be not used
 
+    Parameters
+    ----------
+    data : list
+        consists of the dictionary items.
+        eg : [{"Name":"test", "LastName":"test"} , {"Name":"test", "LastName":"test1"}]
 
-def aggregation_count(data, group_column_name, group_columns, show_columns):
-    group_columns_dict = {}
+    group_column_name : str
+         a unique group column name. eg: "count_Name"
+
+    group_columns : list
+        data set is filtered by the values inside group_columns to count. eg: ["Name"]
+
+    Returns
+    -------
+    list
+        the data set with count by group_columns. eg: [{"Name":"test", "count_Name":2, (test,):2}]
+
+    Raises
+    ------
+    Exception
+        If group_column_name is not unique then raise Exception
+    """
+
+    if group_column_name in get_columns(data):
+        raise Exception(f"{group_column_name} must be unique")
+
+    # create an empty list
     data_group_by_list = []
 
     for item in data:
-        # dictionary item 
+        # create tuple key with the values inside data if the key is existing in group_columns
+        # this key will be used to find and update the count
         group_by_dict_key = tuple([item[key] for key in item if key in group_columns])
+        # filter the data and create a list by group_by_dict_key
         data_group_by_list_filtered = list(filter(lambda data: group_by_dict_key in data, data_group_by_list))
-
+        # if the filtered data was not created before, add new field to dictionary item to keep the count of the row
         if len(data_group_by_list_filtered) == 0:
-            group_columns_dict = build_row_by_columns(item, show_columns)
+            group_columns_dict = item.copy()
             group_columns_dict[group_column_name] = 1
             group_columns_dict[group_by_dict_key] = 1
             data_group_by_list.append(group_columns_dict)
         else:
-            for item in data_group_by_list_filtered:
-                item[group_column_name] = item[group_column_name] + 1
-                item[group_by_dict_key] = item[group_by_dict_key] + 1
-
+            # the filtered data was created before then just update the count
+            for item_filtered in data_group_by_list_filtered:
+                item_filtered[group_column_name] = item_filtered[group_column_name] + 1
+                item_filtered[group_by_dict_key] = item_filtered[group_by_dict_key] + 1
+    # return the new data set with count
     return data_group_by_list
 
 
+# create data set to use for some statistical methods
 def create_data_set(data, key_column, data_set_column):
+    """
+    Creates a data set to use for some statistical methods by key_column and data_set_column
+
+
+    Parameters
+    ----------
+    data : list
+        consists of the dictionary items.
+        eg : [{"Name":"test", "Year":2000, "Score":1} , {"Name":"test", "Year":2001, "Score":2}]
+
+    key_column : str
+         used to find data set value and this value will be key of new data set.
+         eg: "Name"
+
+    data_set_column : str
+        used to find data set value and this value will be value of new data set
+        eg: "Score"
+
+    Returns
+    -------
+    list
+        created new data set by using original data.
+        eg: ["Name":[1,2]]
+    """
+    # create an empty list
     result = []
-
+    # The value of dictionary item in data will be key of the new data set
     for item in data:
+        # Use key_column to find this value
         result_item_key = item[key_column]
+        # The value of the key will be found by using data_set_column
         result_item_data_set_value = item[data_set_column]
-
+        # filter data by result_item_key
         result_filtered = list(filter(lambda data: result_item_key in data, result))
-
+        # if the result has been never populated
         if len(result_filtered) == 0:
-            if (len(result) == 0):
+            if len(result) == 0:
                 result = [{result_item_key: [result_item_data_set_value]}]
             else:
                 result.append({result_item_key: [result_item_data_set_value]})
-        else:
+        else:  # if the result has been already populated, just update the data set
             for result_item in result_filtered:
                 result_item_values = result_item[result_item_key]
                 result_item_values.append(result_item_data_set_value)
