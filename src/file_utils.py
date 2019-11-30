@@ -134,7 +134,7 @@ def build_row_by_columns(data_item, cols):
     """
     # do nothing if "cols" are empty or "None"
     if not cols:
-           return data_item
+        return data_item
     # create an empty dictionary
     row_dict = {}
     # use each column as a key for new dictionary object and the item where is inside the original dictionary assign
@@ -347,11 +347,11 @@ def group_by(data, group_columns, aggregation, show_columns):
         raise Exception('No input parameters can be None or empty')
     # raise exception if items of show_columns are not in group_columns
     if not all([(item in group_columns) for item in show_columns]):
-       raise Exception('The items of "show_columns" list must be in "group_columns" list')
+        raise Exception('The items of "show_columns" list must be in "group_columns" list')
     # raise exception if the aggregation method is not supported
     if not aggregation in ['count']:
         raise Exception(f'[{aggregation}] method is not supported')
-        
+
     # create group column name to make the aggregation column unique
     group_column_name = aggregation + "_" + "_".join(group_columns)
     # create a empty list
@@ -483,25 +483,25 @@ def create_data_set(data, key_column, data_set_column):
 
 
 if __name__ == "__main__":
-# =============================================================================
-     data_set = read_csv(
-         "/home/fsusam/Development/workspace/python/standard-deviation/src/examples/data/athlete_events.csv",
-         delimiter=';',
-         clean_chars_header=['"'])
-     print()
-     print(f"Sample Row : {sample_rows(data_set, 1)}")
-# 
-#     data_set = select_columns(data_set, ['NOC', 'Year', 'Medal'])
-#     print()
-#     print(f"Sample Row selected columns : {sample_rows(data_set, 1)}")
-# 
-#     print()
-#     columns = get_columns(data_set)
-#     print(f"Columns : {columns}")
-# 
-#     print()
-     data_set = filter_by(data_set, {"NOC": ['CHN', 'GER'], "Medal": ['Silver', 'Bronze', 'Gold']})
-     print(f"Sample row filtered data :{sample_rows(data_set, 1)}")
+    # =============================================================================
+    data_set = read_csv(
+        "/home/fsusam/Development/workspace/python/standard-deviation/src/examples/data/athlete_events.csv",
+        delimiter=';',
+        clean_chars_header=['"'])
+    print()
+    print(f"Sample Row : {sample_rows(data_set, 1)}")
+    #
+    #     data_set = select_columns(data_set, ['NOC', 'Year', 'Medal'])
+    #     print()
+    #     print(f"Sample Row selected columns : {sample_rows(data_set, 1)}")
+    #
+    #     print()
+    #     columns = get_columns(data_set)
+    #     print(f"Columns : {columns}")
+    #
+    #     print()
+    data_set = filter_by(data_set, {"NOC": ['CHN', 'GER'], "Medal": ['Silver', 'Bronze', 'Gold']})
+    print(f"Sample row filtered data :{sample_rows(data_set, 1)}")
 # 
 #     print()
 #     data_set = group_by(data_set, group_columns=["NOC", "Year"], show_columns=["NOC", "Year"], aggregation="count")
@@ -512,6 +512,6 @@ if __name__ == "__main__":
 #     print(f"Sample row data_set_plot :{data_set_plot}")
 # 
 # =============================================================================
-       # data_set = read_csv("/home/fsusam/Development/workspace/python/standard-deviation/src/unit-tests/test_data.csv", clean_chars_header=['"'])
-       
-       # data_set = filter_by(data_set, filter_values=[{'Name':['User2']}])
+# data_set = read_csv("/home/fsusam/Development/workspace/python/standard-deviation/src/unit-tests/test_data.csv", clean_chars_header=['"'])
+
+# data_set = filter_by(data_set, filter_values=[{'Name':['User2']}])
