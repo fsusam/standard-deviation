@@ -1,13 +1,9 @@
-import matplotlib
+# Program Name: plot_utils
+# Purpose: Read a file and parse by a delimiter, help to create a new data set
+
 import matplotlib.pyplot as plt
 
 import statistical_data_analysis_tool as sdat
-
-
-def adjacent_values(vals, q1, q3):
-    upper_adjacent_value = q3
-    lower_adjacent_value = q1
-    return lower_adjacent_value, upper_adjacent_value
 
 
 def set_axis_style(ax, labels, xlabel=None):
@@ -28,15 +24,6 @@ def violin(data, ax, title, inds, medians, quartile1, quartile3, ylabel, axis_la
     ax.violinplot(data)
     # set style for the axes
     set_axis_style(ax, axis_labels)
-
-
-def box(data, ax, title, ylabel, axis_labels):
-    # set style for the axes
-    set_axis_style(ax, axis_labels)
-
-    ax.set_title(title)
-    ax.set_ylabel(ylabel)
-    ax.boxplot(data)
 
 
 def scatter(data_x, data_y, ax, title):
@@ -109,7 +96,7 @@ def correlation_table(data_x, data_y, ax):
     ax.axis('off')
 
 
-def build_pilot_violin(data, title, axis_labels, ylabel, showTable=False, saveFig=False, figsize=(12, 5)):
+def build_plot_violin(data, title, axis_labels, ylabel, showTable=False, saveFig=False, figsize=(12, 5)):
     fig = plt.figure(figsize=figsize)
     ax = fig.add_subplot(121)
 
@@ -128,28 +115,67 @@ def build_pilot_violin(data, title, axis_labels, ylabel, showTable=False, saveFi
 
     if (saveFig):
         # Save the figure
-        fig.savefig('build_pilot_violin.png', bbox_inches='tight')
+        fig.savefig('build_plot_violin.png', bbox_inches='tight')
 
 
-def build_pilot_box(data, title, axis_labels, ylabel, showTable=False, saveFig=False, figsize=(12, 5)):
+# build a box style plot
+def build_plot_box(data, title, axis_labels, ylabel, showTable=False, saveFig=False, figsize=(12, 5)):
+    """
+    Builds a box style plot by using matplotlib library
+
+
+    Parameters
+    ----------
+    data : list
+        numeric data series which is required for plot. e.g [1,2,3,4]
+
+    title : str
+        title where is placed on top of the figure.
+
+    axis_labels : list
+        labels where is placed on x line
+
+    ylabel : str
+        labels where is placed on x line
+
+    showTable : bool
+        table where is next to plot to show some statistical values such as "std, mean, median etc..."
+        Default is False
+
+    saveFig: bool
+        Save the result plot to disk as image. Default is False
+
+    figsize: tuple
+        figure size. Default is (12,5)
+    """
+    # create figure object
     fig = plt.figure(figsize=figsize)
+    # create 1 row 2 column grid and put the box plot to first cell
     ax = fig.add_subplot(121)
-
-    # Create an box plot  
-    box(data, ax, title, ylabel, axis_labels)
-
+    # Create an box plot
+    # put the labels to "x line"
+    ax.set_xticklabels(axis_labels)
+    # put the title to top of the figure
+    ax.set_title(title)
+    # put the label to "y line"
+    ax.set_ylabel(ylabel)
+    # send the data to plot to create a box style plot
+    ax.boxplot(data)
+    # create a table if showTable is True
     if (showTable):
+        # put the table plot to second cell
         tbl = fig.add_subplot(122)
+        # create table plot
         statistical_table(data, tbl, axis_labels)
-
+    # show plot
     plt.show()
-
+    # save the plot to disk
     if (saveFig):
         # Save the figure
-        fig.savefig('build_pilot_box.png', bbox_inches='tight')
+        fig.savefig('build_plot_box.png', bbox_inches='tight')
 
 
-def build_pilot_scatter(data_x, data_y, title, showTable=False, saveFig=False, figsize=(12, 5)):
+def build_plot_scatter(data_x, data_y, title, showTable=False, saveFig=False, figsize=(12, 5)):
     fig = plt.figure(figsize=figsize)
     ax = fig.add_subplot(121)
 
@@ -164,4 +190,4 @@ def build_pilot_scatter(data_x, data_y, title, showTable=False, saveFig=False, f
 
     if (saveFig):
         # Save the figure
-        fig.savefig('build_pilot_scatter.png')
+        fig.savefig('build_plot_scatter.png')

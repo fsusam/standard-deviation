@@ -3,7 +3,7 @@ import sys
 sys.path.append('./../')
 
 from file_utils import read_csv, select_columns, get_columns, filter_by, group_by, create_data_set, sample_rows
-from pilot_utils import build_pilot_violin, build_pilot_box, build_pilot_scatter
+from plot_utils import build_plot_violin, build_plot_box, build_plot_scatter
 
 def box_violin_plot(data_set):
     data_set = select_columns(data_set, ['NOC', 'Year', 'Medal'] )
@@ -27,11 +27,11 @@ def box_violin_plot(data_set):
     data = [ item[key] for item in data_set_plot for key in item]
     axis_labels = [key.replace('"', '') for item in data_set_plot for key in item]
     
-    # build and show pilot violin
-    build_pilot_violin(data, title="Compare Germany vs China", showTable=True, axis_labels=axis_labels, ylabel="Medals", saveFig=True);
+    # build and show plot violin
+    # build_plot_violin(data, title="Compare Germany vs China", showTable=True, axis_labels=axis_labels, ylabel="Medals", saveFig=True);
     
-    # build and show pilot box
-    build_pilot_box(data, title="Compare Germany vs China",showTable=True, axis_labels=axis_labels, ylabel="Medals", saveFig=True);
+    # build and show plot box
+    build_plot_box(data, title="Compare Germany vs China",showTable=True, axis_labels=axis_labels, ylabel="Medals", saveFig=True);
     
 def scatter_plot(data_set):
     print("Andrea Henkel is a retired German professional biathlete")
@@ -60,7 +60,7 @@ def scatter_plot(data_set):
     print(f"data_x : {data_x}")
     print(f"data_x : {data_y}")
     
-    build_pilot_scatter(data_x=data_x, data_y=data_y, title="Andrea Henkel Correlation",showTable=True, saveFig=True);    
+    build_plot_scatter(data_x=data_x, data_y=data_y, title="Andrea Henkel Correlation",showTable=True, saveFig=True);
     
 data_set = read_csv(
         "/home/fsusam/Development/workspace/python/standard-deviation/src/examples/data/athlete_events.csv",
@@ -79,4 +79,4 @@ print(f"Columns : {columns}")
 box_violin_plot(data_set)
 
 # test scatter plot
-scatter_plot(data_set)
+# scatter_plot(data_set)
