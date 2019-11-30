@@ -28,10 +28,10 @@ def box_violin_plot(data_set):
     axis_labels = [key.replace('"', '') for item in data_set_plot for key in item]
     
     # build and show plot violin
-    # build_plot_violin(data, title="Compare Germany vs China", showTable=True, axis_labels=axis_labels, ylabel="Medals", saveFig=True);
+    build_plot_violin(data, title="Compare Germany vs China", showTable=True, axis_labels=axis_labels, ylabel="Medals", saveFig=True);
     
     # build and show plot box
-    build_plot_box(data, title="Compare Germany vs China",showTable=True, axis_labels=axis_labels, ylabel="Medals", saveFig=True);
+    # build_plot_box(data, title="Compare Germany vs China",showTable=True, axis_labels=axis_labels, ylabel="Medals", saveFig=True);
     
 def scatter_plot(data_set):
     print("Andrea Henkel is a retired German professional biathlete")
