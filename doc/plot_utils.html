@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module plot_utils</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>plot_utils</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/fsusam/Development/workspace/python/standard-deviation/src/plot_utils.py">/home/fsusam/Development/workspace/python/standard-deviation/src/plot_utils.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;Program&nbsp;Name:&nbsp;plot_utils<br>
+#&nbsp;Purpose:&nbsp;Display&nbsp;plot,&nbsp;and&nbsp;a&nbsp;table&nbsp;for&nbsp;detail</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.pyplot.html">matplotlib.pyplot</a><br>
+</td><td width="25%" valign=top><a href="statistical_data_analysis_tool.html">statistical_data_analysis_tool</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-build_plot_box"><strong>build_plot_box</strong></a>(data, title, axis_labels, ylabel, showTable=False, saveFig=False, figsize=(12, 5))</dt><dd><tt>Builds&nbsp;a&nbsp;box&nbsp;style&nbsp;plot&nbsp;by&nbsp;using&nbsp;matplotlib&nbsp;library<br>
+&nbsp;<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;numeric&nbsp;data&nbsp;series&nbsp;which&nbsp;is&nbsp;required&nbsp;for&nbsp;plot.&nbsp;e.g&nbsp;[1,2,3,4]<br>
+&nbsp;<br>
+title&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;where&nbsp;is&nbsp;placed&nbsp;on&nbsp;top&nbsp;of&nbsp;the&nbsp;figure.<br>
+&nbsp;<br>
+axis_labels&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;labels&nbsp;where&nbsp;is&nbsp;placed&nbsp;on&nbsp;x&nbsp;line<br>
+&nbsp;<br>
+ylabel&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;labels&nbsp;where&nbsp;is&nbsp;placed&nbsp;on&nbsp;x&nbsp;line<br>
+&nbsp;<br>
+showTable&nbsp;:&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;table&nbsp;where&nbsp;is&nbsp;next&nbsp;to&nbsp;plot&nbsp;to&nbsp;show&nbsp;some&nbsp;statistical&nbsp;values&nbsp;such&nbsp;as&nbsp;"std,&nbsp;mean,&nbsp;median&nbsp;etc..."<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Default&nbsp;is&nbsp;False<br>
+&nbsp;<br>
+saveFig:&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;the&nbsp;result&nbsp;plot&nbsp;to&nbsp;disk&nbsp;as&nbsp;image.&nbsp;Default&nbsp;is&nbsp;False<br>
+&nbsp;<br>
+figsize:&nbsp;tuple<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure&nbsp;size.&nbsp;Default&nbsp;is&nbsp;(12,5)</tt></dd></dl>
+ <dl><dt><a name="-build_plot_scatter"><strong>build_plot_scatter</strong></a>(data_x, data_y, title, showTable=False, saveFig=False, figsize=(12, 5))</dt><dd><tt>Builds&nbsp;a&nbsp;scatter&nbsp;style&nbsp;plot&nbsp;by&nbsp;using&nbsp;matplotlib&nbsp;library<br>
+&nbsp;<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data_x&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;first&nbsp;numeric&nbsp;data&nbsp;series&nbsp;which&nbsp;will&nbsp;be&nbsp;compare.&nbsp;e.g&nbsp;[1,2,3,4]<br>
+&nbsp;<br>
+data_y&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;second&nbsp;numeric&nbsp;data&nbsp;series&nbsp;which&nbsp;will&nbsp;be&nbsp;compare.&nbsp;e.g&nbsp;[1,2,3,4]<br>
+&nbsp;<br>
+title&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;where&nbsp;is&nbsp;placed&nbsp;on&nbsp;top&nbsp;of&nbsp;the&nbsp;figure.<br>
+&nbsp;<br>
+showTable&nbsp;:&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;table&nbsp;where&nbsp;is&nbsp;next&nbsp;to&nbsp;plot&nbsp;to&nbsp;show&nbsp;some&nbsp;statistical&nbsp;values&nbsp;such&nbsp;as&nbsp;"std,&nbsp;mean,&nbsp;median&nbsp;etc..."<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Default&nbsp;is&nbsp;False<br>
+&nbsp;<br>
+saveFig:&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;the&nbsp;result&nbsp;plot&nbsp;to&nbsp;disk&nbsp;as&nbsp;image.&nbsp;Default&nbsp;is&nbsp;False<br>
+&nbsp;<br>
+figsize:&nbsp;tuple<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure&nbsp;size.&nbsp;Default&nbsp;is&nbsp;(12,5)</tt></dd></dl>
+ <dl><dt><a name="-build_plot_violin"><strong>build_plot_violin</strong></a>(data, title, axis_labels, ylabel, showTable=False, saveFig=False, figsize=(12, 5))</dt><dd><tt>Builds&nbsp;a&nbsp;violin&nbsp;style&nbsp;plot&nbsp;by&nbsp;using&nbsp;matplotlib&nbsp;library<br>
+&nbsp;<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;numeric&nbsp;data&nbsp;series&nbsp;which&nbsp;is&nbsp;required&nbsp;for&nbsp;plot.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;length&nbsp;should&nbsp;be&nbsp;equal&nbsp;axis_labels&nbsp;length<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;data&nbsp;series&nbsp;more&nbsp;than&nbsp;one,&nbsp;the&nbsp;data&nbsp;should&nbsp;be&nbsp;like&nbsp;this:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[[1,2,3,4]&nbsp;,&nbsp;[4,3,2,1]]<br>
+&nbsp;<br>
+title&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;where&nbsp;is&nbsp;placed&nbsp;on&nbsp;top&nbsp;of&nbsp;the&nbsp;figure.<br>
+&nbsp;<br>
+axis_labels&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;labels&nbsp;where&nbsp;is&nbsp;placed&nbsp;on&nbsp;x&nbsp;line.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis_labels&nbsp;length&nbsp;should&nbsp;be&nbsp;equal&nbsp;data&nbsp;length.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;eg:&nbsp;["X1","X2"]<br>
+&nbsp;<br>
+ylabel&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;labels&nbsp;where&nbsp;is&nbsp;placed&nbsp;on&nbsp;x&nbsp;line<br>
+&nbsp;<br>
+showTable&nbsp;:&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;table&nbsp;where&nbsp;is&nbsp;next&nbsp;to&nbsp;plot&nbsp;to&nbsp;show&nbsp;some&nbsp;statistical&nbsp;values&nbsp;such&nbsp;as&nbsp;"std,&nbsp;mean,&nbsp;median&nbsp;etc..."<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Default&nbsp;is&nbsp;False<br>
+&nbsp;<br>
+saveFig:&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;the&nbsp;result&nbsp;plot&nbsp;to&nbsp;disk&nbsp;as&nbsp;image.&nbsp;Default&nbsp;is&nbsp;False<br>
+&nbsp;<br>
+figsize:&nbsp;tuple<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure&nbsp;size.&nbsp;Default&nbsp;is&nbsp;(12,5)</tt></dd></dl>
+ <dl><dt><a name="-correlation_table"><strong>correlation_table</strong></a>(data_x, data_y, ax)</dt><dd><tt>Builds&nbsp;a&nbsp;table&nbsp;plot&nbsp;by&nbsp;using&nbsp;matplotlib&nbsp;library&nbsp;to&nbsp;show&nbsp;correlation&nbsp;details<br>
+&nbsp;<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data_x&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;first&nbsp;data&nbsp;series&nbsp;to&nbsp;calculate&nbsp;correlation.&nbsp;e.g&nbsp;[1,2,3,4]<br>
+&nbsp;<br>
+data_y&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;second&nbsp;data&nbsp;series&nbsp;to&nbsp;calculate&nbsp;correlation.&nbsp;e.g&nbsp;[4,3,2,1]<br>
+&nbsp;<br>
+ax&nbsp;:&nbsp;.axes.SubplotBase,&nbsp;or&nbsp;another&nbsp;subclass&nbsp;of&nbsp;~.axes.Axes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;could&nbsp;be&nbsp;plot&nbsp;or&nbsp;sub_plot&nbsp;which&nbsp;is&nbsp;created&nbsp;before</tt></dd></dl>
+ <dl><dt><a name="-statistical_table"><strong>statistical_table</strong></a>(data_set, ax, axis_labels)</dt><dd><tt>Builds&nbsp;a&nbsp;table&nbsp;plot&nbsp;by&nbsp;using&nbsp;matplotlib&nbsp;library&nbsp;to&nbsp;show&nbsp;some&nbsp;statistical&nbsp;details<br>
+&nbsp;<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+data_set&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;series&nbsp;to&nbsp;calculate&nbsp;statistical&nbsp;values.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_set&nbsp;length&nbsp;should&nbsp;be&nbsp;equal&nbsp;axis_labels&nbsp;length.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;e.g:&nbsp;[[1,2,3,4]&nbsp;,&nbsp;[4,3,2,1]]<br>
+&nbsp;<br>
+ax&nbsp;:&nbsp;.axes.SubplotBase,&nbsp;or&nbsp;another&nbsp;subclass&nbsp;of&nbsp;~.axes.Axes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;could&nbsp;be&nbsp;plot&nbsp;or&nbsp;sub_plot&nbsp;which&nbsp;is&nbsp;created&nbsp;before<br>
+&nbsp;<br>
+axis_labels&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;specify&nbsp;column&nbsp;labels&nbsp;on&nbsp;the&nbsp;table.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis_labels&nbsp;length&nbsp;should&nbsp;be&nbsp;equal&nbsp;data_set&nbsp;length.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;eg:&nbsp;["X1","X2"]</tt></dd></dl>
+</td></tr></table>
+</body></html>
