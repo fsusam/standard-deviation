@@ -1,5 +1,5 @@
 # Program Name: plot_utils
-# Purpose: Read a file and parse by a delimiter, help to create a new data set
+# Purpose: Display plot, and a table for detail
 
 import matplotlib.pyplot as plt
 
