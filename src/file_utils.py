@@ -343,11 +343,12 @@ def group_by(data, group_columns, aggregation, show_columns=None):
         raise exception if the aggregation method is not supported
     """
     # raise exception if one of input parameter is None or empty
-    if not all([data, group_columns, aggregation, show_columns]):
-        raise Exception('No input parameters can be None or empty')
+    if not all([data, group_columns, aggregation]):
+        raise Exception('No input parameters can be None or empty expect show_columns')
     # raise exception if items of show_columns are not in group_columns
-    if not all([(item in group_columns) for item in show_columns]):
-        raise Exception('The items of "show_columns" list must be in "group_columns" list')
+    if show_columns:
+        if not all([(item in group_columns) for item in show_columns]):
+            raise Exception('The items of "show_columns" list must be in "group_columns" list')
     # raise exception if the aggregation method is not supported
     if not aggregation in ['count']:
         raise Exception(f'[{aggregation}] method is not supported')
