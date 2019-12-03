@@ -1,11 +1,14 @@
 # Program Name: test_file_utils
 # Purpose: to test the functions of file_utils
 
+# to access file_utils and its functions
 import sys
 
 sys.path.append('./../')
 
+# test framework
 from pytest import raises, fixture
+# module that will be tested
 import file_utils as futl
 
 
