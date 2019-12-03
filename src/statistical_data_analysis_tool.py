@@ -122,25 +122,21 @@ def correlation_pearson(data_setx, data_sety):
 
     # one of data set length
     n = len(data_setx)
-
+    # calculate mean of data_setx
+    mean_x = mean(data_setx)
+    # calculate mean of data_sety
+    mean_y = mean(data_sety)
     # merge data sets and convert to tuple
     tuple_xy = tuple(zip(data_setx, data_sety))
-    # multiply by each other every x and y items which comes from tuple and multiply by length
-    n_sum_tuple = n * sum([x * y for x, y in tuple_xy])
-    # sum x and y data set
-    sum_x = sum(data_setx)
-    sum_y = sum(data_sety)
-
-    # sum pow(x,2) and multiply by n
-    n_sum_x_pow2 = n * sum([x ** 2 for x in data_setx])
-    n_sum_y_pow2 = n * sum([y ** 2 for y in data_sety])
-
-    # sum pow(sum(x),2)
-    sum_x_pow2 = sum_x ** 2
-    sum_y_pow2 = sum_y ** 2
-
-    # calculate pearson correlation
-    result = (n_sum_tuple - (sum_x * sum_y)) / math.sqrt((n_sum_x_pow2 - sum_x_pow2) * (n_sum_y_pow2 - sum_y_pow2))
+    # subtract each item of data_setx from itself own mean  and subtract each item of data_sety from itself own mean
+    # multiply them each other and sum
+    n_sum_tuple = sum([(x - mean_x) * (y - mean_y) for x, y in tuple_xy])
+    # calculate std of data_setx
+    std_x = standard_deviation(data_setx)
+    # calculate std of data_sety
+    std_y = standard_deviation(data_sety)
+    # calculate pearsonr
+    result = n_sum_tuple / ((n - 1) * std_x * std_y)
 
     return result
 

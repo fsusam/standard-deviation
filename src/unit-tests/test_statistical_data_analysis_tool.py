@@ -120,4 +120,4 @@ def test_correlation_pearson(simple_data, simple_data1, simple_data_single_value
 
     assert str(e.value) == "data_setx and data_sety must have the same length."
 
-    assert sdat.correlation_pearson(simple_data, simple_data1) == -0.9
+    assert sdat.correlation_pearson(simple_data, simple_data1) == approx(-0.8999999)

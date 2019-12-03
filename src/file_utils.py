@@ -303,12 +303,12 @@ def filter_by(data, filter_values):
 
 
 # Group the data by specified columns and aggregate some columns by the aggregation method
-def group_by(data, group_columns, aggregation, show_columns):
+def group_by(data, group_columns, aggregation, show_columns=None):
     """
-    The data is given to the function to group by the values inside group_columns and aggregate the column which is
-    specified inside group_columns by an aggregation method.
+    The data is grouped by the values inside group_columns and aggregated the column or rows which is specified inside
+    group_columns with an aggregation method.
 
-    The new data set which is created after the aggregation process consists of a new column that is created
+    The new data set which is created after the aggregation process, consists of a new column that is created
     inside this function. This new column is named by merging items inside group_columns.
     eg : if the group_columns like ["Name"] , the group name column is named like "count_Name"
 
@@ -433,9 +433,9 @@ def aggregation_count(data, group_column_name, group_columns):
 
 
 # create data set to use for some statistical methods
-def create_data_set(data, key_column, data_set_column):
+def create_data_series(data, key_column, data_series_column):
     """
-    Creates a data set to use for some statistical methods by key_column and data_set_column
+    Creates a data series to use for some statistical methods by key_column and data_set_column
 
 
     Parameters
@@ -448,7 +448,7 @@ def create_data_set(data, key_column, data_set_column):
          used to find data set value and this value will be key of new data set.
          eg: "Name"
 
-    data_set_column : str
+    data_series_column : str
         used to find data set value and this value will be value of new data set
         eg: "Score"
 
@@ -465,7 +465,7 @@ def create_data_set(data, key_column, data_set_column):
         # Use key_column to find this value
         result_item_key = item[key_column]
         # The value of the key will be found by using data_set_column
-        result_item_data_set_value = item[data_set_column]
+        result_item_data_set_value = item[data_series_column]
         # filter data by result_item_key
         result_filtered = list(filter(lambda data: result_item_key in data, result))
         # if the result has been never populated
@@ -480,38 +480,3 @@ def create_data_set(data, key_column, data_set_column):
                 result_item_values.append(result_item_data_set_value)
 
     return result
-
-
-if __name__ == "__main__":
-    # =============================================================================
-    data_set = read_csv(
-        "/home/fsusam/Development/workspace/python/standard-deviation/src/examples/data/athlete_events.csv",
-        delimiter=';',
-        clean_chars_header=['"'])
-    print()
-    print(f"Sample Row : {sample_rows(data_set, 1)}")
-    #
-    #     data_set = select_columns(data_set, ['NOC', 'Year', 'Medal'])
-    #     print()
-    #     print(f"Sample Row selected columns : {sample_rows(data_set, 1)}")
-    #
-    #     print()
-    #     columns = get_columns(data_set)
-    #     print(f"Columns : {columns}")
-    #
-    #     print()
-    data_set = filter_by(data_set, {"NOC": ['CHN', 'GER'], "Medal": ['Silver', 'Bronze', 'Gold']})
-    print(f"Sample row filtered data :{sample_rows(data_set, 1)}")
-# 
-#     print()
-#     data_set = group_by(data_set, group_columns=["NOC", "Year"], show_columns=["NOC", "Year"], aggregation="count")
-#     print(f"Sample row group_by data :{sample_rows(data_set, 1)}")
-# 
-#     print()
-#     data_set_plot = create_data_set(data_set, "NOC", "count_NOC_Year")
-#     print(f"Sample row data_set_plot :{data_set_plot}")
-# 
-# =============================================================================
-# data_set = read_csv("/home/fsusam/Development/workspace/python/standard-deviation/src/unit-tests/test_data.csv", clean_chars_header=['"'])
-
-# data_set = filter_by(data_set, filter_values=[{'Name':['User2']}])

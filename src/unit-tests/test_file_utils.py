@@ -96,5 +96,5 @@ def test_group_by(data_set):
     assert str(e.value) == '[sum] method is not supported'
 
 
-def test_create_data_set(data_set):
-    assert futl.create_data_set(data_set, 'Name', 'Score') == [{'User1': ['5', '6', '4']}, {'User2': ['1']}]
+def test_create_data_series(data_set):
+    assert futl.create_data_series(data_set, 'Name', 'Score') == [{'User1': ['5', '6', '4']}, {'User2': ['1']}]

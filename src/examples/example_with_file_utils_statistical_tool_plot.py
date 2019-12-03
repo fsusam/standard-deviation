@@ -5,7 +5,7 @@ import sys
 
 sys.path.append('./../')
 
-from file_utils import read_csv, select_columns, get_columns, filter_by, group_by, create_data_set, sample_rows
+from file_utils import read_csv, select_columns, get_columns, filter_by, group_by, create_data_series, sample_rows
 from plot_utils import build_plot_violin, build_plot_box, build_plot_scatter
 
 
@@ -41,7 +41,7 @@ def box_violin_plot(data_set):
     print()
 
     # create a data set
-    data_set_plot = create_data_set(data_set, "NOC", "count_NOC_Year")
+    data_set_plot = create_data_series(data_set, "NOC", "count_NOC_Year")
     # show the result
     print(f"create data set :{data_set_plot}")
     print()
