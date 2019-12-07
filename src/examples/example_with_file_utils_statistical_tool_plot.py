@@ -2,6 +2,7 @@
 # Purpose: Example of using plot_utils and file_utils libraries
 
 import sys
+from pathlib import Path
 
 sys.path.append('./../')
 
@@ -115,8 +116,12 @@ def scatter_plot(data_set):
 
 
 # read the file and get data set
+data_folder = Path("data/")
+
+file_to_open = data_folder / "athlete_events.csv"
+
 data_set = read_csv(
-    "/home/fsusam/Development/workspace/python/standard-deviation/src/examples/data/athlete_events.csv",
+    file_to_open,
     delimiter=";",
     clean_chars_header=['"']
 )

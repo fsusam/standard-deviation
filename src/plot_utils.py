@@ -239,7 +239,8 @@ def build_plot_box(data, title, axis_labels, ylabel, showTable=False, saveFig=Fa
     # put the label to "y line"
     ax.set_ylabel(ylabel)
     # send the data to plot to create a box style plot
-    ax.boxplot(data)
+    ax.boxplot(data, showmeans=True)
+
     # create a table if showTable is True
     if (showTable):
         # put the table plot to second cell
