@@ -13,7 +13,7 @@ It is required the following libraries to use these modules
 
 Install the modules with  **pip** that is Python package installer
 
-    pip install matplotlib pytest
+    pip3 install matplotlib pytest
     
 ## Run the unit tests
 Go to **src/unit-tests** folder and run the unit tests
