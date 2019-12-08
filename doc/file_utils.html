@@ -8,7 +8,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>file_utils</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/fsusam/Development/workspace/python/standard-deviation/src/file_utils.py">/home/fsusam/Development/workspace/python/standard-deviation/src/file_utils.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/fsusam/Development/workspace/python/statistical-data-analysis-tool/src/file_utils.py">/home/fsusam/Development/workspace/python/statistical-data-analysis-tool/src/file_utils.py</a></font></td></tr></table>
     <p><tt>#&nbsp;Program&nbsp;Name:&nbsp;file_utils<br>
 #&nbsp;Purpose:&nbsp;Read&nbsp;a&nbsp;file&nbsp;and&nbsp;parse&nbsp;by&nbsp;a&nbsp;delimiter,&nbsp;help&nbsp;to&nbsp;create&nbsp;a&nbsp;new&nbsp;data&nbsp;set</tt></p>
 <p>
@@ -94,7 +94,7 @@ Returns<br>
 -------<br>
 str<br>
 &nbsp;&nbsp;&nbsp;&nbsp;column&nbsp;name.&nbsp;eg:&nbsp;"Name"&nbsp;or&nbsp;"Name_1"</tt></dd></dl>
- <dl><dt><a name="-create_data_set"><strong>create_data_set</strong></a>(data, key_column, data_set_column)</dt><dd><tt>Creates&nbsp;a&nbsp;data&nbsp;set&nbsp;to&nbsp;use&nbsp;for&nbsp;some&nbsp;statistical&nbsp;methods&nbsp;by&nbsp;key_column&nbsp;and&nbsp;data_set_column<br>
+ <dl><dt><a name="-create_data_series"><strong>create_data_series</strong></a>(data, key_column, data_series_column)</dt><dd><tt>Creates&nbsp;a&nbsp;data&nbsp;series&nbsp;to&nbsp;use&nbsp;for&nbsp;some&nbsp;statistical&nbsp;methods&nbsp;by&nbsp;key_column&nbsp;and&nbsp;data_set_column<br>
 &nbsp;<br>
 &nbsp;<br>
 Parameters<br>
@@ -107,7 +107,7 @@ key_column&nbsp;:&nbsp;str<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;used&nbsp;to&nbsp;find&nbsp;data&nbsp;set&nbsp;value&nbsp;and&nbsp;this&nbsp;value&nbsp;will&nbsp;be&nbsp;key&nbsp;of&nbsp;new&nbsp;data&nbsp;set.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;eg:&nbsp;"Name"<br>
 &nbsp;<br>
-data_set_column&nbsp;:&nbsp;str<br>
+data_series_column&nbsp;:&nbsp;str<br>
 &nbsp;&nbsp;&nbsp;&nbsp;used&nbsp;to&nbsp;find&nbsp;data&nbsp;set&nbsp;value&nbsp;and&nbsp;this&nbsp;value&nbsp;will&nbsp;be&nbsp;value&nbsp;of&nbsp;new&nbsp;data&nbsp;set<br>
 &nbsp;&nbsp;&nbsp;&nbsp;eg:&nbsp;"Score"<br>
 &nbsp;<br>
@@ -150,10 +150,10 @@ Returns<br>
 -------<br>
 list<br>
 &nbsp;&nbsp;&nbsp;&nbsp;columns&nbsp;of&nbsp;the&nbsp;data&nbsp;set&nbsp;:&nbsp;["Name",&nbsp;"LastName"}]</tt></dd></dl>
- <dl><dt><a name="-group_by"><strong>group_by</strong></a>(data, group_columns, aggregation, show_columns)</dt><dd><tt>The&nbsp;data&nbsp;is&nbsp;given&nbsp;to&nbsp;the&nbsp;function&nbsp;to&nbsp;group&nbsp;by&nbsp;the&nbsp;values&nbsp;inside&nbsp;group_columns&nbsp;and&nbsp;aggregate&nbsp;the&nbsp;column&nbsp;which&nbsp;is<br>
-specified&nbsp;inside&nbsp;group_columns&nbsp;by&nbsp;an&nbsp;aggregation&nbsp;method.<br>
+ <dl><dt><a name="-group_by"><strong>group_by</strong></a>(data, group_columns, aggregation, show_columns=None)</dt><dd><tt>The&nbsp;data&nbsp;is&nbsp;grouped&nbsp;by&nbsp;the&nbsp;values&nbsp;inside&nbsp;group_columns&nbsp;and&nbsp;aggregated&nbsp;the&nbsp;column&nbsp;or&nbsp;rows&nbsp;which&nbsp;is&nbsp;specified&nbsp;inside<br>
+group_columns&nbsp;with&nbsp;an&nbsp;aggregation&nbsp;method.<br>
 &nbsp;<br>
-The&nbsp;new&nbsp;data&nbsp;set&nbsp;which&nbsp;is&nbsp;created&nbsp;after&nbsp;the&nbsp;aggregation&nbsp;process&nbsp;consists&nbsp;of&nbsp;a&nbsp;new&nbsp;column&nbsp;that&nbsp;is&nbsp;created<br>
+The&nbsp;new&nbsp;data&nbsp;set&nbsp;which&nbsp;is&nbsp;created&nbsp;after&nbsp;the&nbsp;aggregation&nbsp;process,&nbsp;consists&nbsp;of&nbsp;a&nbsp;new&nbsp;column&nbsp;that&nbsp;is&nbsp;created<br>
 inside&nbsp;this&nbsp;function.&nbsp;This&nbsp;new&nbsp;column&nbsp;is&nbsp;named&nbsp;by&nbsp;merging&nbsp;items&nbsp;inside&nbsp;group_columns.<br>
 eg&nbsp;:&nbsp;if&nbsp;the&nbsp;group_columns&nbsp;like&nbsp;["Name"]&nbsp;,&nbsp;the&nbsp;group&nbsp;name&nbsp;column&nbsp;is&nbsp;named&nbsp;like&nbsp;"count_Name"<br>
 &nbsp;<br>
